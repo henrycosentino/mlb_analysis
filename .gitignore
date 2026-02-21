@@ -1,0 +1,5 @@
+__pycache__/
+.DS_Store
+*.egg-info/
+notebooks/baseball_flight_path.ipynb
+utils/homerun/

@@ -1,0 +1,11 @@
+pytz
+requests
+mlbstatsapi
+numpy
+pandas
+plotly
+statsmodels
+ngboost
+xgboost
+scikit-learn
+scipy
