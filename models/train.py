@@ -1,19 +1,19 @@
 import pandas as pd
 from ngboost.distns import Normal
 from sklearn.tree import DecisionTreeRegressor
-from utils.modeling_helpers import ngb_pipeline, xgb_pipeline
+from utils.modeling import ngb_pipeline, xgb_pipeline
 
 
 # --- Load in LAA Double Binned Data ---
 laa_double_df = pd.read_parquet("../data/processed/laa_double_data.parquet")
 laa_double_df = laa_double_df.drop(
     columns = [
-        'ticker', 'time_pst', 'price', 'trade_count', 'pct_px_chg',
-        'homerun_dummy','opp_homerun_dummy','score_delta_abs'
+        'ticker', 'time_pst', 'yes_price_dollars', 'trade_count', 'px_chg',
+        'homerun_dummy', 'opp_homerun_dummy', 'score_delta_abs'
     ]
 )
-y_cols = [col for col in laa_double_df.columns if col.startswith("d_pct_px_chg")]
-x_cols = [col for col in laa_double_df.columns if not col.startswith("d_pct_px_chg")]
+y_cols = [col for col in laa_double_df.columns if col.startswith("d_px_chg")]
+x_cols = [col for col in laa_double_df.columns if not col.startswith("d_px_chg")]
 
 
 # --- NGBoost Scorer, Base Models, & Parameter Grid ---
